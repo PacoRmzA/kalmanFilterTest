@@ -37,7 +37,8 @@ while True:
     if frame is None:
         break
     frame_HSV = cv.cvtColor(frame, cv.COLOR_BGR2HSV)
-    frame_threshold = cv.inRange(frame_HSV, (63, 164, 48), (121, 255, 94)) # hardcoded HSV values for green alarm clock test
+    # frame_threshold = cv.inRange(frame_HSV, (63, 164, 48), (121, 255, 94)) # NIGHT COLORS
+    frame_threshold = cv.inRange(frame_HSV, (64, 112, 84), (119, 255, 255)) # hardcoded HSV values for green alarm clock test (DAY COLORS)
     cv.erode(frame_threshold, kernel, frame_threshold, iterations=2)
     cv.dilate(frame_threshold, kernel, frame_threshold, iterations=4)
 
