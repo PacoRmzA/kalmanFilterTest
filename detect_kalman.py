@@ -57,8 +57,6 @@ while True:
     if init:
         pred_arr = k.predict()
         cv.circle(frame,(int(pred_arr[0]),int(pred_arr[1])), 5, (0,255,0), -1)
-    else:
-        continue
     
     cv.imshow("frame", frame)
     cv.imshow("detect", frame_threshold)
