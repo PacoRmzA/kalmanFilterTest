@@ -54,7 +54,7 @@ def on_high_V_thresh_trackbar(val):
     high_V = val
     high_V = max(high_V, low_V+1)
     cv.setTrackbarPos(high_V_name, window_detection_name, high_V)
-cap = cv.VideoCapture('video_cel_kalman_stabilized.mp4')
+cap = cv.VideoCapture('videoCarrito.mp4')
 cv.namedWindow(window_capture_name)
 cv.namedWindow(window_thresholded_name)
 cv.namedWindow(window_detection_name)
@@ -76,12 +76,11 @@ while True:
         break
 
     frame_HSV = cv.cvtColor(frame, cv.COLOR_BGR2HSV)
-    frame_threshold = cv.inRange(frame, (low_H, low_S, low_V), (high_H, high_S, high_V))
+    frame_threshold = cv.inRange(frame_HSV, (low_H, low_S, low_V), (high_H, high_S, high_V))
     
     
     cv.imshow(window_capture_name, frame)
     cv.imshow(window_thresholded_name, frame_threshold)
-    #cv.imshow(window_detection_name, frame_threshold)
     
     key = cv.waitKey(30)
     if key == ord('q') or key == 27:
